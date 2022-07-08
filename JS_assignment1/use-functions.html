@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping list example</title>
+    <style>
+      li {
+        margin-bottom: 10px;
+      }
+
+      li button {
+        font-size: 8px;
+        margin-left: 20px;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h1>My shopping list</h1>
+
+    <div>
+      <label for="firstName">Enter a First Name:</label>
+      <input type="text" name="firstName" id="firstName">
+      <label for="lastName">Enter a Last Name:</label>
+      <input type="text" name="lastName" id="lastName">
+      <button onclick() id="submit">Submit</button>
+      <p>Click on the button for which you need the output</p>
+      <button onclick() id="fullName" >First Name</button>
+      <button onclick() id="reverseName" >Reverse Name</button>
+    </div>
+
+    <ul>
+
+    </ul>
+
+    <script>
+        var first;
+        var last;
+        var fullName;
+        var fullNameReversed;
+
+
+        const buttonRef = document.getElementById('submit');
+        buttonRef.addEventListener('click', ()=>{
+             const person = Person(document.getElementById('firstName'),document.getElementById('lastName'))
+             const fullN = person.fullName();
+             const listPara = document.createElement('p');
+             listPara.textContent = fullN;
+        });
+
+        const buttonFullName = document.getElementById('fullName');
+        buttonFullName.addEventListener('click', ()=>{
+            const fullN = person.fullName();
+            const listPara = document.createElement('p');
+            listPara.textContent = fullN;
+        });
+
+        const buttonReverseName = document.getElementById('reverseName');
+        buttonReverseName.addEventListener('click', ()=>{
+            const fullNRev = person.fullNameReversed();
+            const listPara = document.createElement('p');
+            listPara.textContent = fullNRev;
+        });
+
+  function personFullName() {
+    return this.first + ' ' + this.last;
+  }
+  function personFullNameReversed() {
+    return this.last + ', ' + this.first;
+  }
+  function Person(first, last) {
+    this.first = first;
+    this.last = last;
+    this.fullName = personFullName;
+    this.fullNameReversed = personFullNameReversed;
+  }
+    </script>
+  </body>
+</html>
+  
