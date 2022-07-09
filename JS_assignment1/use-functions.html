@@ -19,17 +19,24 @@
   </head>
   <body>
 
-    <h1>My shopping list</h1>
+    <h1></h1>
 
     <div>
       <label for="firstName">Enter a First Name:</label>
       <input type="text" name="firstName" id="firstName">
+    </br>
       <label for="lastName">Enter a Last Name:</label>
       <input type="text" name="lastName" id="lastName">
       <button onclick() id="submit">Submit</button>
-      <p>Click on the button for which you need the output</p>
-      <button onclick() id="fullName" >First Name</button>
-      <button onclick() id="reverseName" >Reverse Name</button>
+    </br>
+      <label for="fullName">Your Full Name:</label>
+      <input type="text" name="fullName" id="fullName">
+    </br>
+      <label for="reverseFullName">Your Reverse Full Name:</label>
+      <input type="text" name="reverseFullName" id="reverseFullName">
+    </br>
+    <label for="firstTwoChars">First two chars:</label>
+    <input type="text" name="firstTwoChars" id="firstTwoChars">
     </div>
 
     <ul>
@@ -37,45 +44,35 @@
     </ul>
 
     <script>
-        var first;
-        var last;
-        var fullName;
-        var fullNameReversed;
 
-
+        let person ;
         const buttonRef = document.getElementById('submit');
         buttonRef.addEventListener('click', ()=>{
-             const person = Person(document.getElementById('firstName'),document.getElementById('lastName'))
-             const fullN = person.fullName();
-             const listPara = document.createElement('p');
-             listPara.textContent = fullN;
+              person = Person(document.getElementById('firstName').value,document.getElementById('lastName').value);
+              setValue("fullName",person.fullName());
+              setValue("reverseFullName",person.fullNameReversed());
+              setValue("firstTwoChars",person.firstTwoChars(person.first,person.last))
         });
 
-        const buttonFullName = document.getElementById('fullName');
-        buttonFullName.addEventListener('click', ()=>{
-            const fullN = person.fullName();
-            const listPara = document.createElement('p');
-            listPara.textContent = fullN;
-        });
-
-        const buttonReverseName = document.getElementById('reverseName');
-        buttonReverseName.addEventListener('click', ()=>{
-            const fullNRev = person.fullNameReversed();
-            const listPara = document.createElement('p');
-            listPara.textContent = fullNRev;
-        });
-
+  function setValue(elementName,valueFunc){
+    document.getElementById(elementName).value=valueFunc;
+  }
   function personFullName() {
     return this.first + ' ' + this.last;
   }
   function personFullNameReversed() {
     return this.last + ', ' + this.first;
   }
-  function Person(first, last) {
-    this.first = first;
-    this.last = last;
-    this.fullName = personFullName;
-    this.fullNameReversed = personFullNameReversed;
+  function  Person(first, last) {
+    return {
+    first: first,
+    last: last,
+    fullName: personFullName,
+    fullNameReversed: personFullNameReversed,
+    firstTwoChars: (first,last)=>{
+      return first.charAt(0) + last.charAt(0);
+    }
+    }
   }
     </script>
   </body>
