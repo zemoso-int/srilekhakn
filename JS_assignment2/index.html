@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<script>
+"use strict";
+const data = {emailId:'srilekha.kn@gmail.com'};
+
+
+function getData(uId) {
+let promise = fetch("https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.js")
+.then(response => {
+  response.json();
+  })
+.catch((error) => {
+  console.error('Invalid emailId error:', error);
+});
+return data.emailId;
+}
+
+console.log("start");
+var email = getData("skc");
+alert("Email id of the user id is: " + email);
+console.log("Email id of the user id is: " + email);
+console.log("end");
+
+</script>
