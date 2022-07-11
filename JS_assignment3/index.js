@@ -11,7 +11,7 @@ const person = {
      age: 92
 }
 
-//Object Destriction
+//Object Destruction
 const {name, age} = person;
 
 console.log(name);

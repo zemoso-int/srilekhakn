@@ -1,24 +1,55 @@
 <!DOCTYPE html>
 <script>
-"use strict";
+/*"use strict";
 const data = {emailId:'srilekha.kn@gmail.com'};
 
 
 function getData(uId) {
-let promise = fetch("https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.js")
+let promise = fetch("index.js",{
+  mode: 'no-cors',
+  headers: {
+    'Access-Control-Allow-Origin':'*'
+  }
+})
 .then(response => {
-  response.json();
-  })
+  console.log(response.json())
+})
 .catch((error) => {
   console.error('Invalid emailId error:', error);
 });
-return data.emailId;
 }
 
 console.log("start");
 var email = getData("skc");
 alert("Email id of the user id is: " + email);
 console.log("Email id of the user id is: " + email);
+console.log("end");*/
+
+async function getData(uId) {
+    let promise = await fetch("index.txt", {
+        mode: 'no-cors',
+        headers: {
+            'Access-Control-Allow-Origin': '*'
+        }
+    })
+        // .then(response => {
+             console.log(promise);
+        //     // return  response.text();
+            return promise.text();
+        // })
+        // .catch((error) => {
+        //     console.error('Invalid emailId error:');
+        // });
+}
+
+console.log("start");
+var email = getData("skc");
+// alert("Email id of the user id is: " + email);
+// var email = getData("skc.txt");
+email.then(email => console.log(`Email id of the user id is:${email} `))
+.catch(error => console.log(error));
+
+// console.log("Email id of the user id is: " + email);
 console.log("end");
 
 </script>
