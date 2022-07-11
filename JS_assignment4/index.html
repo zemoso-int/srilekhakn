@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storage Assignment</title>
+    <style>
+      li {
+        margin-bottom: 10px;
+      }
+
+      li button {
+        font-size: 8px;
+        margin-left: 20px;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h1></h1>
+
+    <div>
+      <label for="localStorage">LocalStorageCount:</label>
+      <input type="text" name="localStorage" id="localStorage">
+      <button onclick() id="localStorageSubmit">localStorageIncriment</button>
+    </br>
+      <label for="sessionStorage">SessionStorageCount:</label>
+      <input type="text" name="sessionStorage" id="sessionStorage">
+      <button onclick() id="sessionStorageSubmit">sessionStorageIncriment</button>
+    </br>
+    </div>
+
+    <ul>
+
+    </ul>
+
+    <script>
+        const buttonLocal = document.getElementById('localStorageSubmit');
+
+        if(!localStorage.getItem("localKey")){
+                document.getElementById('localStorage').value =0;
+                localStorage.setItem("localKey",0);
+            }else{
+                document.getElementById('localStorage').value =localStorage.getItem("localKey");
+            }
+        if(!sessionStorage.getItem("sessionKey")){
+                document.getElementById('sessionStorage').value =0;
+                sessionStorage.setItem("sessionKey",0);
+            }else{
+                console.log("In session storage value"+sessionStorage.getItem("sessionKey"));
+                document.getElementById('sessionStorage').value =sessionStorage.getItem("sessionKey");
+            }
+    
+        buttonLocal.addEventListener('click', ()=>{
+              localStorage.setItem("localKey",parseInt(localStorage.getItem("localKey"))+1);
+              document.getElementById('localStorage').value = localStorage.getItem("localKey");
+        });
+
+        const buttonSession = document.getElementById('sessionStorageSubmit');
+        buttonSession.addEventListener('click', ()=>{
+            console.log(sessionStorage.getItem("sessionKey"));
+            sessionStorage.setItem("sessionKey",parseInt(sessionStorage.getItem("sessionKey"))+1 );
+            document.getElementById('sessionStorage').value = sessionStorage.getItem("sessionKey");
+        });
+    </script>
+  </body>
+</html>
+  
