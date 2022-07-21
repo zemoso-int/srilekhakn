@@ -3,17 +3,17 @@ import PropTypes from "prop-types";
 
 import IconButton from "@mui/material/IconButton";
 
-const IconButtonComponent = (props: any) => (
-  <IconButton color="primary" disabled={props.disabled} onClick={props.onClick}>
-    {props.icon}
+export interface IconProps {
+  icon: any,
+  disabled: boolean,
+  onClick: () => void,
+}
+
+const IconButtonComponent = ({icon,disabled,onClick} : IconProps) => (
+  <IconButton color="primary" disabled={disabled} onClick={onClick}>
+    {icon}
   </IconButton>
 );
-
-IconButtonComponent.propTypes = {
-  icon: PropTypes.element.isRequired,
-  disabled: PropTypes.bool,
-  onClick: PropTypes.func,
-};
 
 IconButtonComponent.defaultProps = {
   disable: false,
